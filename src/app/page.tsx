@@ -9,6 +9,7 @@ interface PortfolioItem {
   id: number;
   type: 'image' | 'video' | 'gif';
   src: string;
+  description?: string;
 }
 
 export default function Home() {
@@ -25,31 +26,32 @@ export default function Home() {
 
   const [portfolioItems] = useState<PortfolioItem[]>([
     // Images
-    { id: 1, type: 'image', src: '/bellahadidvogue.png' },
-    { id: 2, type: 'image', src: '/VERAWANG EMBRACE Rose.png' },
-    { id: 3, type: 'image', src: '/99c fries.png' },
-    { id: 4, type: 'image', src: '/daves triple.png' },
-    { id: 5, type: 'gif', src: '/rebrand.gif' },
-    { id: 6, type: 'image', src: '/levis.png' },
-    { id: 7, type: 'image', src: '/sabrina astral pink.png' },
-    { id: 8, type: 'image', src: '/astral pink.png' },
-    { id: 9, type: 'video', src: '/20250519_1405_Silhouette with Moving Grain_simple_compose_01jvmvhepqeqy9y7qwrm5cspks_1.mp4' },
-    { id: 10, type: 'image', src: '/wrangler.png' },
-    { id: 11, type: 'image', src: '/youngonce.png' },
-    { id: 12, type: 'image', src: '/rometheworld.png' },
-    { id: 13, type: 'image', src: '/marlboro cowboy.png' },
-    { id: 14, type: 'image', src: '/car magazine 1.png' },
-    { id: 15, type: 'image', src: '/car magazine 2.png' },
-    { id: 16, type: 'image', src: '/hellhound.png' },
-    { id: 17, type: 'image', src: '/cutout.png' },
-    { id: 18, type: 'image', src: '/final friday.png' },
-    { id: 19, type: 'image', src: '/starlight2.png' },
-    { id: 20, type: 'image', src: '/YE NEWS.png' },
-    { id: 21, type: 'image', src: '/beabadoobee.png' },
+    { id: 1, type: 'image', src: '/bellahadidvogue.png', description: 'Editorial Work' },
+    { id: 2, type: 'image', src: '/VERAWANG EMBRACE Rose.png', description: 'Product Campaign' },
+    { id: 3, type: 'image', src: '/99c fries.png', description: 'Advertising Campaign' },
+    { id: 4, type: 'image', src: '/daves triple.png', description: 'Brand Campaign' },
+    { id: 5, type: 'gif', src: '/rebrand.gif', description: 'Brand Identity' },
+    { id: 6, type: 'image', src: '/levis.png', description: 'Editorial Design' },
+    { id: 7, type: 'image', src: '/sabrina astral pink.png', description: 'Product Photography' },
+    { id: 8, type: 'image', src: '/astral pink.png', description: 'Album Artwork' },
+    { id: 9, type: 'video', src: '/20250519_1405_Silhouette with Moving Grain_simple_compose_01jvmvhepqeqy9y7qwrm5cspks_1.mp4', description: 'Video Art' },
+    { id: 10, type: 'image', src: '/wrangler.png', description: 'Fashion Photography' },
+    { id: 11, type: 'image', src: '/youngonce.png', description: 'Music Campaign' },
+    { id: 12, type: 'image', src: '/rometheworld.png', description: 'Travel Photography' },
+    { id: 13, type: 'image', src: '/marlboro cowboy.png', description: 'Vintage Advertising' },
+    { id: 14, type: 'image', src: '/car magazine 1.png', description: 'Magazine Spread' },
+    { id: 15, type: 'image', src: '/car magazine 2.png', description: 'Magazine Cover' },
+    { id: 16, type: 'image', src: '/hellhound.png', description: 'Album Cover' },
+    { id: 17, type: 'image', src: '/cutout.png', description: 'Conceptual Art' },
+    { id: 18, type: 'image', src: '/final friday.png', description: 'Movie Poster' },
+    { id: 19, type: 'image', src: '/starlight2.png', description: 'Digital Art' },
+    { id: 20, type: 'image', src: '/YE NEWS.png', description: 'News Graphic' },
+    { id: 21, type: 'image', src: '/beabadoobee.png', description: 'Band Merchandise' },
     // Moved to end
-    { id: 22, type: 'image', src: '/DAEMON.png' },
-    { id: 23, type: 'image', src: '/bulletholebandaid.png' },
-    { id: 24, type: 'image', src: '/focus.png' },
+    { id: 22, type: 'image', src: '/DAEMON.png', description: 'Album Art' },
+    { id: 23, type: 'image', src: '/bulletholebandaid.png', description: 'Conceptual Photography' },
+    { id: 24, type: 'image', src: '/wrangler woman.png', description: 'Fashion Campaign' },
+    { id: 25, type: 'image', src: '/levis email campaign.png', description: 'Email Campaign' },
   ]);
 
   return (
@@ -59,7 +61,7 @@ export default function Home() {
         <motion.h1 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          className="text-4xl md:text-6xl font-bold mb-4"
+          className="text-7xl md:text-9xl font-bold mb-4"
         >
           Taher Ksibi
         </motion.h1>
@@ -67,7 +69,7 @@ export default function Home() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="text-2xl md:text-3xl mb-4"
+          className="text-xl md:text-2xl mb-4"
         >
           Design / Marketing
         </motion.h2>
@@ -127,6 +129,11 @@ export default function Home() {
             )}
             {item.type === 'gif' && (
               <img src={item.src} alt="Portfolio item" />
+            )}
+            {item.description && (
+              <div className="portfolio-item-overlay">
+                <p>{item.description}</p>
+              </div>
             )}
           </div>
         ))}
