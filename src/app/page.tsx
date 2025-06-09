@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FaXTwitter } from 'react-icons/fa6';
 import { MdEmail } from 'react-icons/md';
+import Image from 'next/image';
 
 interface PortfolioItem {
   id: number;
@@ -26,32 +27,31 @@ export default function Home() {
 
   const [portfolioItems] = useState<PortfolioItem[]>([
     // Images
-    { id: 1, type: 'image', src: '/bellahadidvogue.png', description: 'Editorial Work' },
-    { id: 2, type: 'image', src: '/VERAWANG EMBRACE Rose.png', description: 'Product Campaign' },
-    { id: 3, type: 'image', src: '/99c fries.png', description: 'Advertising Campaign' },
-    { id: 4, type: 'image', src: '/daves triple.png', description: 'Brand Campaign' },
+    { id: 1, type: 'image', src: '/bellahadidvogue.webp', description: 'Editorial Work' },
+    { id: 2, type: 'image', src: '/VERAWANG EMBRACE Rose.webp', description: 'Product Campaign' },
+    { id: 3, type: 'image', src: '/99c fries.webp', description: 'Advertising Campaign' },
+    { id: 4, type: 'image', src: '/levis email campaign.webp', description: 'Email Campaign' },
     { id: 5, type: 'gif', src: '/rebrand.gif', description: 'Brand Identity' },
-    { id: 6, type: 'image', src: '/levis.png', description: 'Editorial Design' },
-    { id: 7, type: 'image', src: '/sabrina astral pink.png', description: 'Product Photography' },
-    { id: 8, type: 'image', src: '/astral pink.png', description: 'Album Artwork' },
+    { id: 6, type: 'image', src: '/levis.webp', description: 'Editorial Design' },
+    { id: 7, type: 'image', src: '/sabrina astral pink.webp', description: 'Editorial Work' },
+    { id: 8, type: 'image', src: '/astral pink.webp', description: 'Product Campaign' },
     { id: 9, type: 'video', src: '/20250519_1405_Silhouette with Moving Grain_simple_compose_01jvmvhepqeqy9y7qwrm5cspks_1.mp4', description: 'Video Art' },
-    { id: 10, type: 'image', src: '/wrangler.png', description: 'Fashion Photography' },
-    { id: 11, type: 'image', src: '/youngonce.png', description: 'Music Campaign' },
-    { id: 12, type: 'image', src: '/rometheworld.png', description: 'Travel Photography' },
-    { id: 13, type: 'image', src: '/marlboro cowboy.png', description: 'Vintage Advertising' },
-    { id: 14, type: 'image', src: '/car magazine 1.png', description: 'Magazine Spread' },
-    { id: 15, type: 'image', src: '/car magazine 2.png', description: 'Magazine Cover' },
-    { id: 16, type: 'image', src: '/hellhound.png', description: 'Album Cover' },
-    { id: 17, type: 'image', src: '/cutout.png', description: 'Conceptual Art' },
-    { id: 18, type: 'image', src: '/final friday.png', description: 'Movie Poster' },
-    { id: 19, type: 'image', src: '/starlight2.png', description: 'Digital Art' },
-    { id: 20, type: 'image', src: '/YE NEWS.png', description: 'News Graphic' },
-    { id: 21, type: 'image', src: '/beabadoobee.png', description: 'Band Merchandise' },
-    // Moved to end
-    { id: 22, type: 'image', src: '/DAEMON.png', description: 'Album Art' },
-    { id: 23, type: 'image', src: '/bulletholebandaid.png', description: 'Conceptual Photography' },
-    { id: 24, type: 'image', src: '/wrangler woman.png', description: 'Fashion Campaign' },
-    { id: 25, type: 'image', src: '/levis email campaign.png', description: 'Email Campaign' },
+    { id: 10, type: 'image', src: '/wrangler.webp', description: 'Fashion Brand Campaign' },
+    { id: 11, type: 'image', src: '/youngonce.webp', description: 'Music Campaign' },
+    { id: 12, type: 'image', src: '/rometheworld.webp', description: 'Travel Photography' },
+    { id: 13, type: 'image', src: '/marlboro cowboy.webp', description: 'Vintage Advertising' },
+    { id: 14, type: 'image', src: '/car magazine 1.webp', description: 'Magazine Spread' },
+    { id: 15, type: 'image', src: '/car magazine 2.webp', description: 'Magazine Cover' },
+    { id: 16, type: 'image', src: '/hellhound.webp', description: 'Album Cover' },
+    { id: 17, type: 'image', src: '/cutout.webp', description: 'Conceptual Art' },
+    { id: 18, type: 'image', src: '/final friday.webp', description: 'Movie Poster' },
+    { id: 19, type: 'image', src: '/starlight2.webp', description: 'Digital Art' },
+    { id: 20, type: 'image', src: '/YE NEWS.webp', description: 'News Graphic' },
+    { id: 21, type: 'image', src: '/beabadoobee.webp', description: 'Band Merchandise' },
+    { id: 22, type: 'image', src: '/DAEMON.webp', description: 'Album Art' },
+    { id: 23, type: 'image', src: '/bulletholebandaid.webp', description: 'Album Cover' },
+    { id: 24, type: 'image', src: '/wrangler woman.webp', description: 'Fashion Campaign' },
+    { id: 25, type: 'image', src: '/daves triple.webp', description: 'Brand Campaign' },
   ]);
 
   return (
@@ -113,7 +113,14 @@ export default function Home() {
             onClick={() => setSelectedItem(selectedItem?.src === item.src ? null : item)}
           >
             {item.type === 'image' && (
-              <img src={item.src} alt="Portfolio item" />
+              <Image
+                src={item.src}
+                alt={item.description || 'Portfolio item'}
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                className="object-cover"
+                priority={item.id <= 4} // Prioritize loading for first 4 images
+              />
             )}
             {item.type === 'video' && (
               <video 
@@ -128,7 +135,13 @@ export default function Home() {
               />
             )}
             {item.type === 'gif' && (
-              <img src={item.src} alt="Portfolio item" />
+              <Image
+                src={item.src}
+                alt={item.description || 'Portfolio item'}
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                className="object-cover"
+              />
             )}
             {item.description && (
               <div className="portfolio-item-overlay">
