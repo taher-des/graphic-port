@@ -48,8 +48,8 @@ export default function Home() {
     { id: 19, type: 'image', src: '/starlight2.webp', description: 'Digital Art' },
     { id: 20, type: 'image', src: '/YE NEWS.webp', description: 'News Graphic' },
     { id: 21, type: 'image', src: '/beabadoobee.webp', description: 'Band Merchandise' },
-    { id: 22, type: 'image', src: '/DAEMON.webp', description: 'Album Art' },
-    { id: 23, type: 'image', src: '/bulletholebandaid.webp', description: 'Album Cover' },
+    { id: 22, type: 'video', src: '/chocolate shuffle.mp4', description: 'Chocolate Shuffle' },
+    { id: 23, type: 'video', src: '/Sephora Skincareiq 2 3.mp4', description: 'Sephora Campaign' },
     { id: 24, type: 'image', src: '/wrangler woman.webp', description: 'Fashion Campaign' },
     { id: 25, type: 'image', src: '/daves triple.webp', description: 'Brand Campaign' },
   ]);
