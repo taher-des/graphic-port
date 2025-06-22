@@ -2,8 +2,9 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { FaXTwitter } from 'react-icons/fa6';
 import { MdEmail } from 'react-icons/md';
+import { FaFilePdf } from 'react-icons/fa';
+import { IoClose } from 'react-icons/io5';
 import Image from 'next/image';
 
 interface PortfolioItem {
@@ -15,6 +16,7 @@ interface PortfolioItem {
 
 export default function Home() {
   const [selectedItem, setSelectedItem] = useState<PortfolioItem | null>(null);
+  const [showAbout, setShowAbout] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
@@ -77,10 +79,19 @@ export default function Home() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
-          className="text-lg md:text-xl mb-8"
+          className="text-lg md:text-xl mb-4"
         >
           Located in Toronto, ON
         </motion.p>
+        <motion.button
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5 }}
+          onClick={() => setShowAbout(true)}
+          className="text-sm border border-white px-4 py-2 rounded-full hover:bg-white hover:text-black transition-all duration-300 mb-8"
+        >
+          About
+        </motion.button>
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -88,15 +99,15 @@ export default function Home() {
           className="flex w-full justify-center"
         >
           <a 
-            href="https://twitter.com/yourusername" 
+            href="/resume.pdf" 
             target="_blank" 
             rel="noopener noreferrer"
             className="text-2xl hover:text-gray-400 transition-colors mr-[75px]"
           >
-            <FaXTwitter style={{ color: 'white' }} />
+            <FaFilePdf style={{ color: 'white' }} />
           </a>
           <a 
-            href="mailto:your.email@example.com"
+            href="mailto:taherksibi@gmail.com"
             className="text-2xl hover:text-gray-400 transition-colors"
           >
             <MdEmail style={{ color: 'white' }} />
@@ -152,7 +163,52 @@ export default function Home() {
         ))}
       </section>
 
-      {/* Modal */}
+      {/* About Modal */}
+      <AnimatePresence>
+        {showAbout && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="about-modal-overlay"
+            onClick={() => setShowAbout(false)}
+          >
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.8, opacity: 0 }}
+              className="about-modal-content"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="flex justify-between items-start mb-4">
+                <h2 className="text-2xl font-bold">About Me</h2>
+                <button
+                  onClick={() => setShowAbout(false)}
+                  className="text-gray-400 hover:text-white transition-colors"
+                >
+                  <IoClose size={24} />
+                </button>
+              </div>
+              <div className="space-y-4 text-gray-300 leading-relaxed">
+                <p>
+                  I'm a Toronto-based designer with 10+ years of Photoshop experience and a Bachelor's degree in Finance and Economics from the University of Toronto.
+                </p>
+                <p>
+                  This portfolio features concept work that combines strong visual design with strategic marketing goals — reflecting my ability to think creatively with intention.
+                </p>
+                <p>
+                  I specialize in editorial design, digital and product advertising, brand identity, and social media marketing. I bring both the creative eye and the analytical mindset — from designing bold visuals to optimizing performance across platforms like Meta (Facebook/Instagram) and TikTok.
+                </p>
+                <p>
+                  I'm passionate about creating work that not only looks sharp, but delivers real results.
+                </p>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Portfolio Modal */}
       <AnimatePresence>
         {selectedItem && (
           <motion.div
