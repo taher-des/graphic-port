@@ -191,7 +191,7 @@ export default function Home() {
               </div>
               <div className="space-y-4 text-gray-300 leading-relaxed">
                 <p>
-                  I'm a Toronto-based designer with 10+ years of Photoshop experience and a Bachelor's degree in Finance and Economics from the University of Toronto.
+                  I&apos;m a Toronto-based designer with 10+ years of Photoshop experience and a Bachelor&apos;s degree in Finance and Economics from the University of Toronto.
                 </p>
                 <p>
                   This portfolio features concept work that combines strong visual design with strategic marketing goals — reflecting my ability to think creatively with intention.
@@ -200,7 +200,7 @@ export default function Home() {
                   I specialize in editorial design, digital and product advertising, brand identity, and social media marketing. I bring both the creative eye and the analytical mindset — from designing bold visuals to optimizing performance across platforms like Meta (Facebook/Instagram) and TikTok.
                 </p>
                 <p>
-                  I'm passionate about creating work that not only looks sharp, but delivers real results.
+                  I&apos;m passionate about creating work that not only looks sharp, but delivers real results.
                 </p>
               </div>
             </motion.div>
