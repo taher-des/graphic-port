@@ -19,6 +19,7 @@ body {
   grid-template-columns: repeat(5, 1fr);
   gap: 1rem;
   padding: 1rem;
+  justify-content: center;
 }
 
 .portfolio-item {
