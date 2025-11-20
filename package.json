@@ -1,0 +1,10 @@
+{
+  "name": "taherksibi-portfolio",
+  "version": "1.0.0",
+  "description": "Taher Ksibi Portfolio",
+  "main": "index.html",
+  "scripts": {
+    "build": "echo 'Static site - no build needed'"
+  }
+}
+

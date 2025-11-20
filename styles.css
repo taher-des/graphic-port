@@ -1,0 +1,368 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #000000;
+    color: #ffffff;
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Hero Section */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+}
+
+.hero-content {
+    max-width: 800px;
+    margin-bottom: 4rem;
+}
+
+.name {
+    font-size: 4rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+    letter-spacing: 2px;
+}
+
+.skills {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    color: #cccccc;
+    font-weight: 300;
+}
+
+.location {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: #aaaaaa;
+}
+
+.email {
+    font-size: 1.1rem;
+    color: #ffffff;
+    text-decoration: none;
+    border: 2px solid #ffffff;
+    padding: 12px 30px;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.email:hover {
+    background-color: #ffffff;
+    color: #000000;
+}
+
+/* First Project in Hero */
+.hero-project {
+    max-width: 1200px;
+    width: 100%;
+    margin-top: 2rem;
+}
+
+.hero-project-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    min-height: 500px;
+}
+
+.hero-project-image {
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #000000;
+}
+
+.hero-project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.hero-project-image:hover img {
+    transform: scale(1.05);
+}
+
+.hero-project-image video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+.hero-project-image:hover video {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+
+.hero-project-description {
+    padding: 2rem;
+}
+
+.hero-project-description h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.hero-project-description p {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    color: #cccccc;
+    line-height: 1.8;
+}
+
+/* Project Sections */
+.project-section {
+    padding: 4rem 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.project-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    min-height: 500px;
+}
+
+/* Desktop alternating layout - every other project has reverse order */
+.project-section:nth-child(even) .project-container {
+    grid-template-columns: 1fr 1fr;
+}
+
+.project-section:nth-child(even) .project-container .project-description {
+    order: 1;
+}
+
+.project-section:nth-child(even) .project-container .project-image {
+    order: 2;
+}
+
+.project-image {
+    width: 100%;
+    height: 500px;
+    overflow: hidden;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #000000;
+}
+
+.project-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+.project-image:hover img {
+    transform: scale(1.05);
+}
+
+/* Video Styles */
+.project-image video {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 8px;
+}
+
+.project-image:hover video {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+
+.project-description {
+    padding: 2rem;
+}
+
+.project-description h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+.project-description p {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    color: #cccccc;
+    line-height: 1.8;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .hero-project-container,
+    .project-container {
+        gap: 2rem;
+    }
+    
+    .hero-project-image,
+    .project-image {
+        height: 450px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero {
+        padding: 1.5rem;
+        min-height: auto;
+    }
+    
+    .hero-content {
+        margin-bottom: 2rem;
+    }
+    
+    .name {
+        font-size: 3rem;
+    }
+    
+    .skills {
+        font-size: 1.3rem;
+    }
+    
+    .location {
+        font-size: 1.1rem;
+    }
+    
+    /* Mobile: Force consistent image, text pattern for all projects */
+    .hero-project-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        min-height: auto;
+    }
+    
+    .project-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        min-height: auto;
+    }
+    
+    /* Reset all ordering on mobile - all projects follow image, text pattern */
+    .project-section:nth-child(even) .project-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .project-section:nth-child(even) .project-container .project-description {
+        order: 0; /* Text after image */
+    }
+    
+    .project-section:nth-child(even) .project-container .project-image {
+        order: 0; /* Image before text */
+    }
+    
+    .hero-project-description h2,
+    .project-description h2 {
+        font-size: 2.2rem;
+        text-align: center;
+    }
+    
+    .hero-project-description p,
+    .project-description p {
+        font-size: 1rem;
+        text-align: center;
+    }
+    
+    .hero-project-image,
+    .project-image {
+        height: 350px;
+        margin-bottom: 1rem;
+    }
+    
+    .project-section {
+        padding: 3rem 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero {
+        padding: 1rem;
+    }
+    
+    .name {
+        font-size: 2.5rem;
+    }
+    
+    .skills {
+        font-size: 1.1rem;
+    }
+    
+    .location {
+        font-size: 1rem;
+    }
+    
+    .email {
+        padding: 10px 25px;
+        font-size: 1rem;
+    }
+    
+    .project-section {
+        padding: 2rem 1rem;
+    }
+    
+    .hero-project-description,
+    .project-description {
+        padding: 1rem;
+    }
+    
+    .hero-project-description h2,
+    .project-description h2 {
+        font-size: 1.8rem;
+        margin-bottom: 1rem;
+    }
+    
+    .hero-project-description p,
+    .project-description p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+    
+    .hero-project-image,
+    .project-image {
+        height: 280px;
+    }
+}
+
+@media (max-width: 360px) {
+    .name {
+        font-size: 2rem;
+    }
+    
+    .hero-project-description h2,
+    .project-description h2 {
+        font-size: 1.6rem;
+    }
+    
+    .hero-project-description p,
+    .project-description p {
+        font-size: 0.9rem;
+    }
+    
+    .hero-project-image,
+    .project-image {
+        height: 250px;
+    }
+}
+
